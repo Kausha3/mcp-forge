@@ -1,23 +1,47 @@
 {
-  "name": "mcp-forge",
+  "name": "@kausha17/mcp-forge",
   "version": "0.1.0",
   "description": "Turn any OpenAPI/Swagger spec into an MCP server your AI agent can call — with auth and a search mode that scales to large APIs.",
   "type": "module",
-  "bin": { "mcp-forge": "./dist/cli.js" },
+  "bin": {
+    "mcp-forge": "./dist/cli.js"
+  },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
-  "files": ["dist"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "test": "node --import tsx --test src/parse.test.ts src/request.test.ts src/e2e.test.ts",
     "typecheck": "tsc --noEmit",
     "prepublishOnly": "npm run test && npm run build"
   },
-  "keywords": ["mcp", "openapi", "swagger", "openapi-to-mcp", "rest", "api", "ai", "agent", "claude", "model-context-protocol", "tools"],
+  "keywords": [
+    "mcp",
+    "openapi",
+    "swagger",
+    "openapi-to-mcp",
+    "rest",
+    "api",
+    "ai",
+    "agent",
+    "claude",
+    "model-context-protocol",
+    "tools"
+  ],
   "author": "Kausha Trivedi",
   "license": "MIT",
-  "repository": { "type": "git", "url": "git+https://github.com/Kausha3/mcp-forge.git" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kausha3/mcp-forge.git"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0",
     "yaml": "^2.9.0"

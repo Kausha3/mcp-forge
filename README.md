@@ -1,14 +1,14 @@
 # mcp-forge
 
 [![CI](https://github.com/Kausha3/mcp-forge/actions/workflows/ci.yml/badge.svg)](https://github.com/Kausha3/mcp-forge/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/mcp-forge.svg)](https://www.npmjs.com/package/mcp-forge)
+[![npm](https://img.shields.io/npm/v/@kausha17/mcp-forge.svg)](https://www.npmjs.com/package/@kausha17/mcp-forge)
 
 **Turn any OpenAPI/Swagger spec into an MCP server your AI agent can actually call.**
 Point it at a spec, and every endpoint becomes a tool for Claude Desktop, Cursor, Cline,
 or any [MCP](https://modelcontextprotocol.io) client. One command, no code.
 
 ```bash
-npx mcp-forge https://petstore3.swagger.io/api/v3/openapi.json \
+npx @kausha17/mcp-forge https://petstore3.swagger.io/api/v3/openapi.json \
   --base-url https://petstore3.swagger.io/api/v3
 # → an MCP server exposing 19 tools (addPet, findPetsByStatus, getPetById, …)
 ```
@@ -21,13 +21,13 @@ That example is real and tested — an MCP client connects, lists 19 tools, call
 Print a ready-to-paste config with `--config`:
 
 ```bash
-npx mcp-forge <your-spec> --config
+npx @kausha17/mcp-forge <your-spec> --config
 ```
 
 ```jsonc
 {
   "mcpServers": {
-    "api": { "command": "npx", "args": ["-y", "mcp-forge", "<your-spec>"] }
+    "api": { "command": "npx", "args": ["-y", "@kausha17/mcp-forge", "<your-spec>"] }
   }
 }
 ```
@@ -53,8 +53,8 @@ So a 400-endpoint enterprise API stays usable. Force it with `--mode search`, or
 Pass headers through to the upstream API:
 
 ```bash
-npx mcp-forge <spec> --bearer "$TOKEN"
-npx mcp-forge <spec> --header "X-API-Key: $KEY" --header "Accept: application/json"
+npx @kausha17/mcp-forge <spec> --bearer "$TOKEN"
+npx @kausha17/mcp-forge <spec> --header "X-API-Key: $KEY" --header "Accept: application/json"
 ```
 
 ## Options
@@ -83,7 +83,7 @@ mcp-forge <spec> [options]
 ## As a library
 
 ```ts
-import { loadSpec, parseSpec, createServer } from "mcp-forge";
+import { loadSpec, parseSpec, createServer } from "@kausha17/mcp-forge";
 
 const spec = parseSpec(await loadSpec("./openapi.yaml"), "https://api.example.com");
 const server = createServer(spec, { baseUrl: spec.baseUrl, headers: {}, mode: "auto" });

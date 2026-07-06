@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/Kausha3/mcp-forge/actions/workflows/ci.yml/badge.svg)](https://github.com/Kausha3/mcp-forge/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/@kausha17/mcp-forge.svg)](https://www.npmjs.com/package/@kausha17/mcp-forge)
+[![npm downloads](https://img.shields.io/npm/dm/@kausha17/mcp-forge.svg)](https://www.npmjs.com/package/@kausha17/mcp-forge)
 
 **Turn any OpenAPI/Swagger spec into an MCP server your AI agent can actually call.**
 Point it at a spec, and every endpoint becomes a tool for Claude Desktop, Cursor, Cline,

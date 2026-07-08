@@ -14,8 +14,26 @@ npx @kausha17/mcp-forge https://petstore3.swagger.io/api/v3/openapi.json \
 # → an MCP server exposing 19 tools (addPet, findPetsByStatus, getPetById, …)
 ```
 
-That example is real and tested — an MCP client connects, lists 19 tools, calls
+That example is real and tested - an MCP client connects, lists 19 tools, calls
 `findPetsByStatus`, and gets live pet data back (see `src/e2e.test.ts`).
+
+For a larger public API, point `mcp-forge` at Xquik's OpenAPI document and keep
+the server in search mode:
+
+```bash
+npx mcp-forge https://xquik.com/openapi.json \
+  --base-url https://xquik.com \
+  --mode search
+```
+
+Add a request header only when calling authenticated endpoints:
+
+```bash
+npx mcp-forge https://xquik.com/openapi.json \
+  --base-url https://xquik.com \
+  --header "X-API-Key: $XQUIK_API_KEY" \
+  --mode search
+```
 
 ## Use it in Claude Desktop (or any MCP client)
 
@@ -42,9 +60,9 @@ tools flooding the model's context, and it picks the wrong one. `mcp-forge` swit
 **search mode** automatically above 40 operations (configurable). Instead of hundreds of
 tools it exposes two:
 
-- **`search_endpoints({ query })`** — the agent searches the API for what it needs and
+- **`search_endpoints({ query })`** - the agent searches the API for what it needs and
   gets back the matching operations with their schemas.
-- **`call_endpoint({ operationId, arguments })`** — then calls the one it found.
+- **`call_endpoint({ operationId, arguments })`** - then calls the one it found.
 
 So a 400-endpoint enterprise API stays usable. Force it with `--mode search`, or keep
 `--mode direct` for small APIs.
